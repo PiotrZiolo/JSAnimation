@@ -1,6 +1,8 @@
 JSAnimation
 ===========
 
+**NOTE: made compatible with matplotlib 3.3.4.**
+
 **NOTE: this package is part of matplotlib as of version 2.1. The code here is maintained only for historical purposes.**
 
 *Copyright (c) 2013, Jake Vanderplas*

@@ -298,7 +298,7 @@ class HTMLWriter(FileMovieWriter):
         class ProcessStandin(object):
             returncode = 0
             def communicate(self):
-                return ('', '')
+                return (''.encode('utf-8'), ''.encode('utf-8'))
         self._proc = ProcessStandin()
 
         # save the frames to an html file
@@ -307,7 +307,7 @@ class HTMLWriter(FileMovieWriter):
                                            self.frame_format)
         else:
             # temp names is filled by FileMovieWriter
-            fill_frames = _included_frames(self._temp_names,
+            fill_frames = _included_frames(self._temp_paths,
                                            self.frame_format)
 
         mode_dict = dict(once_checked='',
@@ -320,7 +320,7 @@ class HTMLWriter(FileMovieWriter):
         with open(self.outfile, 'w') as of:
             of.write(JS_INCLUDE)
             of.write(DISPLAY_TEMPLATE.format(id=self.new_id(),
-                                             Nframes=len(self._temp_names),
+                                             Nframes=len(self._temp_paths),
                                              fill_frames=fill_frames,
                                              interval=interval,
                                              icons=_Icons(),
